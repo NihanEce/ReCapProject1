@@ -13,10 +13,14 @@ namespace Console
         {
             CarManager carManager = new CarManager(new EfCarDal());
 
+
             foreach (var car in carManager.GetAll())
             {
                 System.Console.WriteLine(car.Description);
+                System.Console.WriteLine(car.ModelYear);
             }
+
+
         }
     }
 }
