@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Console
+namespace ConsoleUI
 {
     class Program
     {
@@ -30,10 +30,17 @@ namespace Console
         {
             CarManager carManager = new CarManager(new EfCarDal());
 
-
-            foreach (var car in carManager.GetCarDetails())
+            var result = carManager.GetCarDetails();
+            if (result.Success==true)
             {
-                System.Console.WriteLine(car.BrandName + "/" + car.Description + "/" + car.ColorName + "/" + car.ModelYear);
+                foreach (var car in result.Data)
+                {
+                    System.Console.WriteLine(car.BrandName + "/" + car.Description + "/" + car.ColorName + "/" + car.ModelYear);
+                }
+            }
+            else
+            {
+                System.Console.WriteLine(result.Message);
             }
         }
     }
